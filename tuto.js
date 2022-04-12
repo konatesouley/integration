@@ -7,12 +7,18 @@ const port = 3000;
 //let point_recolte = JSON.parse(fichier)
 //console.log(personne)
 let recolte = require('./solidarite.json')
-console.log(recolte)
+//console.log(recolte)
 
 // la racine de l'api
 app.get('/', function (request, response) {
     response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte')
   })
+
+// parse json
+//var jsonParsed = JSON.parse(jsonData);
+ 
+// access elements
+//console.log(jsonParsed.persons[0].name);
 
 app.get('/products', function(request, response){
     const products = [
