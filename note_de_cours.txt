@@ -1,0 +1,25 @@
+internet 1970
+web 1989
+
+internet = connexion ip
+web = connexion et affichage de page web
+
+client/serveur : git a son propre protocol web, mail, irc
+le client c'est celui qui demande la requête
+le serveur c'est celui qui traite et repond au client
+
+
+######### PROJET ###############################
+
+Les trois sources de données : 
+- liste des station de velomag a montpellier
+
+
+### MISE EN MARCHE DE NODEJS##########
+
+Installation de node: nvm install 17.9.0
+Initialisation du projet: npm init{definir les carateristique du projet}
+
+installation de npm: npm install express --save
+
+mise en route de notre application : node .\index.js
