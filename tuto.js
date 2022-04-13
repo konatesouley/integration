@@ -15,7 +15,7 @@ let recolte = require('./solidarite.json')
 
 // la racine de l'api
 app.get('/', function (request, response) {
-    response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte')
+    response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte: pour voir la liste des des associations , /arret: pour voir les arret des bus proches des point de retrait ou /info pour voir des information sur les sans abris ')
   })
 
 // parse json
@@ -24,29 +24,8 @@ app.get('/', function (request, response) {
 // access elements
 //console.log(jsonParsed.persons[0].name);
 
-app.get('/products', function(request, response){
-    const products = [
-        {
-          id: 1,
-          name: "hammer",
-        },
-        {
-          id: 2,
-          name: "screwdriver",
-        },
-        ,
-        {
-          id: 3,
-          name: "wrench",
-        },
-      ];
-   
-     response.json(products);
-})
 
-app.get('/products/:id', function(request, response){
-    response.send('bienvenue'+request.params.name);
-})
+//https://data.laregion.fr/api/v2/catalog/datasets/solidarite-alimentaire-en-occitanie/records?limit=45&offset=0&lang=fr&timezone=UTC")
 
 
 app.get('/recolte', function(request, response){
@@ -84,7 +63,7 @@ app.get('/recolte', function(request, response){
 //var data1 = data.json();
 
 
-app.get('/recolte2', function(request, response){
+app.get('/arret', function(request, response){
 
 //var url = "https://data.laregion.fr/api/v2/catalog/datasets/solidarite-alimentaire-en-occitanie/records?limit=45&offset=0&lang=fr&timezone=UTC"
   //var data = fetch("https://data.laregion.fr/api/v2/catalog/datasets/solidarite-alimentaire-en-occitanie/records?limit=45&offset=0&lang=fr&timezone=UTC")
@@ -116,7 +95,9 @@ app.get('/recolte2', function(request, response){
 
 })
 
-
+app.get('/info', function(request, response){
+  response.send('cette partie est en creation par abdoulaye');
+})
 
 app.listen(port, function(){
     console.log('Hello :'+ port);
