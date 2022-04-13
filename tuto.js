@@ -50,8 +50,25 @@ app.get('/products/:id', function(request, response){
 
 
 app.get('/recolte', function(request, response){
-    
-    response.json(recolte[0].fields.association);
+  var association = [];
+  adresse = [];
+  telephone = [];
+  resultat = []
+  for (let i = 0; i< recolte.length;i++){
+    association.push(recolte[i].fields.association);
+  }
+
+  for (let i = 0; i< recolte.length;i++){
+    adresse.push(recolte[i].fields.adresse_du_lieu);
+  }
+
+  for (let i = 0; i< recolte.length;i++){
+    telephone.push(recolte[i].fields.tel_ref);
+  }
+
+  resultat = [association,adresse,telephone]
+    //recolte[0].fields.association
+    response.json(resultat);
 })
 
 
@@ -74,9 +91,29 @@ app.get('/recolte2', function(request, response){
   //console.log(data);
   //data = fetch()
   //let url = "https://data.laregion.fr/api/records/1.0/search/?dataset=arrets-de-tramway-de-montpellier-mediterranee-metropole&q=&rows=10";
-        fetch("https://data.laregion.fr/api/records/1.0/search/?dataset=arrets-de-tramway-de-montpellier-mediterranee-metropole&q=&rows=10")
+    fetch("https://data.laregion.fr/api/records/1.0/search/?dataset=arrets-de-tramway-de-montpellier-mediterranee-metropole&q=&rows=10")
         .then(res => res.json())
-        .then(json => response.send(json.records[0].fields.nom));
+        .then(json => { 
+          var arret = [];
+          
+          for (let i = 0; i< json.records.length;i++){
+            arret.push(json.records[i].fields.nom);
+            
+          }
+          //arret[1].fields
+          //var arret2 = [];
+          //for (let j = 0; j< arret.length;j++){
+            //console.log("arret " + j , arret[j]);
+            //arret2.push(arret[j].fields);
+            
+          //}
+          response.json(arret);
+
+        });
+        //response.send(data);
+        //json.records[0].fields.nom
+        //response.send(json.records[1].fields.nom));
+
 })
 
 
