@@ -53,7 +53,7 @@ app.get('/recolte', function(request, response){
   var association = [];
   adresse = [];
   telephone = [];
-  resultat = []
+  //resultat = {}
   for (let i = 0; i< recolte.length;i++){
     association.push(recolte[i].fields.association);
   }
@@ -66,7 +66,7 @@ app.get('/recolte', function(request, response){
     telephone.push(recolte[i].fields.tel_ref);
   }
 
-  resultat = [association,adresse,telephone]
+  resultat = {association,adresse,telephone};
     //recolte[0].fields.association
     response.json(resultat);
 })
