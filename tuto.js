@@ -25,7 +25,7 @@ app.get('/', function (request, response) {
 //console.log(jsonParsed.persons[0].name);
 
 
-//https://data.laregion.fr/api/v2/catalog/datasets/solidarite-alimentaire-en-occitanie/records?limit=45&offset=0&lang=fr&timezone=UTC")
+//https://data.laregion.fr/api/v2/catalog/datasets/solidarite-alimentaire-en-occitanie/records?limit=20&offset=0&lang=fr&timezone=UTC")
 
 
 app.get('/recolte', function(request, response){
@@ -70,7 +70,7 @@ app.get('/arret', function(request, response){
   //console.log(data);
   //data = fetch()
   //let url = "https://data.laregion.fr/api/records/1.0/search/?dataset=arrets-de-tramway-de-montpellier-mediterranee-metropole&q=&rows=10";
-    fetch("https://data.laregion.fr/api/records/1.0/search/?dataset=arrets-de-tramway-de-montpellier-mediterranee-metropole&q=&rows=10")
+    fetch("https://data.laregion.fr/api/records/1.0/search/?dataset=arrets-de-tramway-de-montpellier-mediterranee-metropole&q=&rows=18")
         .then(res => res.json())
         .then(json => { 
           var arret = [];
