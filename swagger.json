@@ -9,17 +9,17 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "http://localhost:3000/",
+    "host": "localhost:3000",
     "basePath": "",
     "tags": [
       {
         "name": "POINT_RETRAIT",
-        "description": "API sur les points de retraits"
+        "description": "API sur les aides et solidarité en occitanie"
       }
     ],
     "schemes": ["http"],
     "consumes": ["application/json"],
-    "produces": ["application/json"], 
+    "produces": ["application/json"],
 
       "paths": {
         "/recolte": {
@@ -30,13 +30,45 @@
               "200": {
                 "description": "OK",
                 "schema": {
-                  "$ref": "#/definitions/recolte"
+                  "$ref": "#/definitions/Recolte"
+                }
+              }
+            }
+          }
+        },
+        "/arret": {
+          "get": {
+            "tags": ["arret"],
+            "summary": "Renseigne les arrets bus/trams de montpellier",
+            "responses": {
+              "300": {
+                "description": "OKK",
+                "schema": {
+                  "$ref": "#/definitions/arrets"
+                }
+              }
+            }
+          }
+        },
+
+        "/temporaire": {
+          "get": {
+            "tags": ["Logement"],
+            "summary": "Renseigne les logements temporaires a montpellier",
+            "responses": {
+              "300": {
+                "description": "OKK",
+                "schema": {
+                  "$ref": "#/definitions/temporaire"
                 }
               }
             }
           }
         }
       },
+
+
+
       "definitions": {
         "Recolte": {
           "required": ["association", "addresse", "telephone"],
@@ -71,7 +103,71 @@
               }
             }
           }
+        },
+        
+        "arrets": {
+          "required": ["nom_arret", "coordonnees_geo"],
+          "properties": {
+            "nom_arret": {
+              "type": "string"
+            },
+            "isPublic": {
+              "type": "boolean"
+            },
+            "books": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "nom_arret": {
+                    "type": "string"
+                  },
+                  "coordonnees_geo": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "coordonnees_geo": {
+              "type": "array",
+              "items": {
+                "type": "array"
+              }
+            }
+          }
+        },
+
+        "temporaire": {
+          "required": ["nom_hotel", "adresses","telephone"],
+          "properties": {
+            "nom_hotel": {
+              "type": "string"
+            },
+            "books": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "nom_hotel": {
+                    "type": "string"
+                  },
+                  "adresses": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "telephone": {
+              "type": "number"
+              
+            }
+          }
         }
       }
+
+
+      
+
+    
 }
 

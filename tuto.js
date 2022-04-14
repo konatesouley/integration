@@ -99,7 +99,7 @@ app.get('/arret', function(request, response){
 
 })
 
-app.get('/info', function(request, response){
+app.get('/temporaire', function(request, response){
   response.send('cette partie est en creation par abdoulaye');
 })
 
