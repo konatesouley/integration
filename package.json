@@ -11,6 +11,11 @@
   "dependencies": {
     "axios": "^0.26.1",
     "express": "^4.17.3",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "swagger": "^0.6.0",
+    "swagger-editor": "^2.10.5"
   }
 }

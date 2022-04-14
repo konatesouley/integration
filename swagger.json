@@ -1,0 +1,77 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "SOLIDARITE API",
+      "description": "Ce API a bout but de donner des information sur association oeuvrant dans l'aide alimentaire",
+      "license": {
+        "name": "Integration de données",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "http://localhost:3000/",
+    "basePath": "",
+    "tags": [
+      {
+        "name": "POINT_RETRAIT",
+        "description": "API sur les points de retraits"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"], 
+
+      "paths": {
+        "/recolte": {
+          "get": {
+            "tags": ["recolte"],
+            "summary": "Renseigne les points de retraits de colis alimentaire",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/definitions/recolte"
+                }
+              }
+            }
+          }
+        }
+      },
+      "definitions": {
+        "Recolte": {
+          "required": ["association", "addresse", "telephone"],
+          "properties": {
+            "association": {
+              "type": "string"
+            },
+            "isPublic": {
+              "type": "boolean"
+            },
+            "addresse": {
+              "type": "string"
+            },
+            "books": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "association": {
+                    "type": "string"
+                  },
+                  "telephone": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "telephone": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+}
+

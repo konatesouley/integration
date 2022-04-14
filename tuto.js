@@ -4,6 +4,10 @@ const express= require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const fetch =require('node-fetch');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+
 //const  axios  =  requiert ( 'axios' ) ;
 
 //const fs = require('fs')
@@ -15,8 +19,7 @@ let recolte = require('./solidarite.json')
 
 // la racine de l'api
 app.get('/', function (request, response) {
-    response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte');
-    //: pour voir la liste des des associations , /arret: pour voir les arret des bus proches des point de retrait ou /info pour voir des information sur les sans abris
+    response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte: pour voir la liste des des associations , /arret: pour voir les arret des bus proches des point de retrait ou /info pour voir des information sur les sans abris');
   })
 
 // parse json
@@ -99,6 +102,11 @@ app.get('/arret', function(request, response){
 app.get('/info', function(request, response){
   response.send('cette partie est en creation par abdoulaye');
 })
+
+
+
+app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.listen(port, function(){
     console.log('Hello :'+ port);
