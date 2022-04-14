@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const fetch =require('node-fetch');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+
 //https://integrationdonnee.herokuapp.com/arret
 
 //const  axios  =  requiert ( 'axios' ) ;
@@ -16,6 +17,35 @@ const swaggerDocument = require('./swagger.json');
 //console.log(personne)
 let recolte = require('./solidarite.json')
 //console.log(recolte)
+
+app.get('/temporaire', function(request, response){
+
+const puppeteer = require('puppeteer');
+(async () => {
+    const browser = await puppeteer.launch({headless: true});
+    const page = await browser.newPage();
+    await page.goto("https://www.montpellier.fr/3249-l-hebergement-temporaire.htm");
+    
+    const movies = await page.evaluate(() => {
+        let movies = [];
+        let elements = document.querySelectorAll('div.coordonnees');
+        for (element of elements) {
+          movies.push({
+              coordonnes: element.querySelector('p.adresse').textContent,
+              tel: element.querySelector('p.telephone').textContent
+              
+          })
+      }
+      return movies;
+    });
+    response.json(movies);
+    //console.log(movies);
+    await browser.close();
+    
+})();
+
+
+})
 
 // la racine de l'api
 app.get('/', function (request, response) {
@@ -99,9 +129,8 @@ app.get('/arret', function(request, response){
 
 })
 
-app.get('/temporaire', function(request, response){
-  response.send('cette partie est en creation par abdoulaye');
-})
+
+
 
 
 
