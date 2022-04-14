@@ -15,7 +15,8 @@ let recolte = require('./solidarite.json')
 
 // la racine de l'api
 app.get('/', function (request, response) {
-    response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte: pour voir la liste des des associations , /arret: pour voir les arret des bus proches des point de retrait ou /info pour voir des information sur les sans abris');
+    response.send('Bonjour, vous êtes à la racine de ce serveur ! pour voir la liste des point de distribution de nourriture, allez voir /recolte');
+    //: pour voir la liste des des associations , /arret: pour voir les arret des bus proches des point de retrait ou /info pour voir des information sur les sans abris
   })
 
 // parse json
