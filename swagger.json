@@ -1,173 +1,172 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0", 
-      "title": "SOLIDARITE API",
-      "description": "Ce API a bout but de donner des information sur association oeuvrant dans l'aide alimentaire",
-      "license": {
-        "name": "Integration de données",
-        "url": "https://opensource.org/licenses/MIT"
-      }
-    },
-    "host": "localhost:3000",
-    "basePath": "",
-    "tags": [
-      {
-        "name": "POINT_RETRAIT",
-        "description": "API sur les aides et solidarité en occitanie"
-      }
-    ],
-    "schemes": ["http"],
-    "consumes": ["application/json"],
-    "produces": ["application/json"],
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0", 
+    "title": "SOLIDARITE API",
+    "description": "Ce API a bout but de donner des information sur association oeuvrant dans l'aide alimentaire",
+    "license": {
+      "name": "Integration de données",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "POINT_RETRAIT",
+      "description": "API sur les aides et solidarité en occitanie"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
 
-      "paths": {
-        "/recolte": {
-          "get": {
-            "tags": ["recolte"],
-            "summary": "Renseigne les points de retraits de colis alimentaire",
-            "responses": {
-              "200": {
-                "description": "OK",
-                "schema": {
-                  "$ref": "#/definitions/Recolte"
-                }
+    "paths": {
+      "/recolte": {
+        "get": {
+          "tags": ["recolte"],
+          "summary": "Renseigne les points de retraits de colis alimentaire",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Recolte"
               }
             }
           }
-        },
-        "/arret": {
-          "get": {
-            "tags": ["arret"],
-            "summary": "Renseigne les arrets bus/trams de montpellier",
-            "responses": {
-              "300": {
-                "description": "OKK",
-                "schema": {
-                  "$ref": "#/definitions/arrets"
-                }
-              }
-            }
-          }
-        },
-
-        "/temporaire": {
-          "get": {
-            "tags": ["Logement"],
-            "summary": "Renseigne les logements temporaires a montpellier",
-            "responses": {
-              "300": {
-                "description": "OKK",
-                "schema": {
-                  "$ref": "#/definitions/temporaire"
-                }
+        }
+      },
+      "/arret": {
+        "get": {
+          "tags": ["arret"],
+          "summary": "Renseigne les arrets bus/trams de montpellier",
+          "responses": {
+            "300": {
+              "description": "OKK",
+              "schema": {
+                "$ref": "#/definitions/arrets"
               }
             }
           }
         }
       },
 
-
-
-      "definitions": {
-        "Recolte": {
-          "required": ["association", "addresse", "telephone"],
-          "properties": {
-            "association": {
-              "type": "string"
-            },
-            "isPublic": {
-              "type": "boolean"
-            },
-            "addresse": {
-              "type": "string"
-            },
-            "books": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "association": {
-                    "type": "string"
-                  },
-                  "telephone": {
-                    "type": "number"
-                  }
-                }
+      "/temporaire": {
+        "get": {
+          "tags": ["Logement"],
+          "summary": "Renseigne les logements temporaires a montpellier",
+          "responses": {
+            "300": {
+              "description": "OKK",
+              "schema": {
+                "$ref": "#/definitions/temporaire"
               }
-            },
-            "telephone": {
-              "type": "array",
-              "items": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        
-        "arrets": {
-          "required": ["nom_arret", "coordonnees_geo"],
-          "properties": {
-            "nom_arret": {
-              "type": "string"
-            },
-            "isPublic": {
-              "type": "boolean"
-            },
-            "books": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "nom_arret": {
-                    "type": "string"
-                  },
-                  "coordonnees_geo": {
-                    "type": "number"
-                  }
-                }
-              }
-            },
-            "coordonnees_geo": {
-              "type": "array",
-              "items": {
-                "type": "array"
-              }
-            }
-          }
-        },
-
-        "temporaire": {
-          "required": ["nom_hotel", "adresses","telephone"],
-          "properties": {
-            "nom_hotel": {
-              "type": "string"
-            },
-            "books": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "nom_hotel": {
-                    "type": "string"
-                  },
-                  "adresses": {
-                    "type": "string"
-                  }
-                }
-              }
-            },
-            "telephone": {
-              "type": "number"
-              
             }
           }
         }
       }
+    },
 
 
+
+    "definitions": {
+      "Recolte": {
+        "required": ["association", "addresse", "telephone"],
+        "properties": {
+          "association": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "addresse": {
+            "type": "string"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "association": {
+                  "type": "string"
+                },
+                "telephone": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "telephone": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
       
+      "arrets": {
+        "required": ["nom_arret", "coordonnees_geo"],
+        "properties": {
+          "nom_arret": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "nom_arret": {
+                  "type": "string"
+                },
+                "coordonnees_geo": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "coordonnees_geo": {
+            "type": "array",
+            "items": {
+              "type": "array"
+            }
+          }
+        }
+      },
+
+      "temporaire": {
+        "required": ["nom_hotel", "adresses","telephone"],
+        "properties": {
+          "nom_hotel": {
+            "type": "string"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "nom_hotel": {
+                  "type": "string"
+                },
+                "adresses": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "telephone": {
+            "type": "number"
+            
+          }
+        }
+      }
+    }
+
 
     
-}
 
+  
+}
