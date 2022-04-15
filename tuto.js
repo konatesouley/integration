@@ -66,6 +66,7 @@ app.get('/recolte', function(request, response){
   var association = [];
   adresse = [];
   telephone = [];
+  table = [];
   //resultat = {}
   for (let i = 0; i< recolte.length;i++){
     association.push(recolte[i].fields.association);
@@ -79,9 +80,19 @@ app.get('/recolte', function(request, response){
     telephone.push(recolte[i].fields.tel_ref);
   }
 
+  for (let i = 0; i< recolte.length;i++){
+    table.push({
+      nom_association: recolte[i].fields.association,
+      adresse_association: recolte[i].fields.adresse_du_lieu,
+      tel_association: recolte[i].fields.tel_ref
+
+    });
+    
+  }
+  
   resultat = {association,adresse,telephone};
     //recolte[0].fields.association
-    response.json(resultat);
+    response.json(table);
 })
 
 
@@ -110,7 +121,10 @@ app.get('/arret', function(request, response){
           var arret = [];
           
           for (let i = 0; i< json.records.length;i++){
-            arret.push(json.records[i].fields.nom);
+            arret.push({
+              nom_arret:json.records[i].fields.nom,
+              coordonnes_arret: json.records[i].fields.geo_shape
+            });
             
           }
           //arret[1].fields
