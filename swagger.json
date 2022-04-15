@@ -138,9 +138,9 @@
         },
 
         "temporaire": {
-          "required": ["adresses","telephone","site"],
+          "required": ["nom_hotel", "adresses","telephone"],
           "properties": {
-            "site": {
+            "nom_hotel": {
               "type": "string"
             },
             "books": {
